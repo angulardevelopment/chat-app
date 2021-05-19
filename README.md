@@ -1,3 +1,15 @@
+# About
+used for real-time, bidirectional and event-based communication between the browser and the server. it used HTTP Long Polling.
+disadvantage of using HTTP Long Polling is that it consumes a lot of server resources. 
+
+npm install socket.io-client
+
+open the link in two tabs to see the communication-
+http://localhost:4200/
+
+http://localhost:4200/
+
+
 # Demo
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.3.
