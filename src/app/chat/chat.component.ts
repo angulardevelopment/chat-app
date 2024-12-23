@@ -1,8 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { io } from 'socket.io-client';
 
+// socket.io-
+// In socket, there are two ways to emit data such as events. One way is from the user to everyone (including user) and the other which emits an event to all the other instances.
 
-var socket = io('http://localhost:5000'); 
+// // Custom namespace
+
+// var socket = io('http://localhost:5000'); // pass the URL of your server for different domain and for same domain leave it empty io() , io("/admin") same origin version, io("https://server-domain.com/admin")  cross origin version
+// socket.id // x8WIv7-mJelg7on_ALbx // Each new connection is assigned a random 20-characters identifier.
+// socket.on('connect', () => {}) // This event is fired by the Socket instance upon connection and reconnection By default, any event emitted while the Socket is not connected will be buffered until reconnection. While useful in most cases (when the reconnection delay is short), it could result in a huge spike of events when the connection is restored. to solve this Offline behavior clear buffer using sendBuffer property socket.sendBuffer = [] then you can receive and sendMessage
+
+// socket.on("disconnect", (reason) => {}) here if the disconnection was initiated by the server, you can reconnect manually here
+// socket.on("connect_error", () => {}) fired when the connection is denied by the server in a middleware function here you can modify the auth attribute
+
+var socket = io('http://localhost:5000');
 
 @Component({
   selector: 'app-chat',
