@@ -21,6 +21,7 @@ I'm Sam, and I'm passionate about product engineering and web development. I cre
 
 ### About the app
 Simple chat app. 
+https://github.com/NodeJSEngineering/websocket
 
 ### useful commands to run project
 open the link in two tabs to see the communication-
