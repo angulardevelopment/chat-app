@@ -1,0 +1,109 @@
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fa;
+  }
+  
+  /* Container styles */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  .inbox {
+    width: 500px;
+    height: 80vh;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  /* Active users section */
+  .inbox__people {
+    background-color: #0078d4;
+    padding: 10px;
+    color: #fff;
+  }
+  
+  .inbox__people h4 {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  /* Messages section */
+  .inbox__messages {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+  }
+  
+  .messages__history {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .fallback {
+    text-align: center;
+    font-size: 14px;
+    color: #999;
+    display: none; /* Hide fallback message initially */
+  }
+  
+  /* Message form section */
+  .message_form {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-top: 1px solid #e1e1e1;
+  }
+  
+  .message_form__input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+  }
+  
+  .message_form__input:focus {
+    border-color: #0078d4;
+  }
+  
+  .message_form__button {
+    background-color: #0078d4;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .message_form__button:hover {
+    background-color: #005fa3;
+  }
+  
+  .message_form__button:focus {
+    outline: none;
+  }
+  
