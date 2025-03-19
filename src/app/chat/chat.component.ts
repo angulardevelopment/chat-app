@@ -6,8 +6,7 @@ import { io } from 'socket.io-client';
 
 // // Custom namespace
 
-// var socket = io('http://localhost:5000'); // pass the URL of your server for different domain and for same domain leave it empty io() , io("/admin") same origin version, io("https://server-domain.com/admin")  cross origin version
-var socket = io('http://localhost:5000');
+// pass the URL of your server for different domain and for same domain leave it empty io() , io("/admin") same origin version, io("https://server-domain.com/admin")  cross origin version
 
 @Component({
   selector: 'app-chat',
@@ -15,6 +14,7 @@ var socket = io('http://localhost:5000');
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
+  socket = io('http://localhost:5000');
 
   constructor() { }
 
@@ -24,17 +24,17 @@ export class ChatComponent implements OnInit {
   }
 
   sendMessage() {
-    socket.emit('join', 'Hello World from client');
+    this.socket.emit('join', 'Hello World from client');
   }
 
   receiveMessage() {
-    socket.on('messages', function (data) {
+    this.socket.on('messages', function (data) {
       console.log(data, 'data');
     });
 
     // you shouldn’t register event handlers in the connect handler itself
     // event handler
-    socket.on("data", () => { /* ... */ });
+    this.socket.on("data", () => { /* ... */ });
   }
 
   // new user is created so we generate nickname and emit event
@@ -46,7 +46,7 @@ export class ChatComponent implements OnInit {
 
     const newUserConnected = (user?) => {
       userName = user || `User${Math.floor(Math.random() * 1000000)}`;
-      socket.emit("new user", userName);
+      this.socket.emit("new user", userName);
       addToUsersBox(userName);
       this.sendMessage();
     };
@@ -66,11 +66,11 @@ export class ChatComponent implements OnInit {
 
     newUserConnected();
 
-    socket.on("new user", function (data) {
+    this.socket.on("new user", function (data) {
       data.map((user) => addToUsersBox(user));
     });
 
-    socket.on("user disconnected", function (userName) {
+    this.socket.on("user disconnected", function (userName) {
       document.querySelector(`.${userName}-userlist`).remove();
     });
 
@@ -112,7 +112,7 @@ export class ChatComponent implements OnInit {
         return;
       }
 
-      socket.emit("chat message", {
+      this.socket.emit("chat message", {
         message: inputField.value,
         nick: userName,
       });
@@ -120,11 +120,11 @@ export class ChatComponent implements OnInit {
       inputField.value = "";
     });
 
-    socket.on("chat message", function (data) {
+    this.socket.on("chat message", function (data) {
       addNewMessage({ user: data.nick, message: data.message });
     });
 
-    socket.on("typing", function (data) {
+    this.socket.on("typing", function (data) {
       const { isTyping, nick } = data;
 
       if (!isTyping) {

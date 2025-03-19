@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, Routes } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'demo';
+  routes: Routes = [];
+
+  constructor(private router: Router) {}
+
+  ngAfterViewInit(): void {
+    // Fetch the routes from the router
+    this.routes = this.router.config;
+  }
 }
